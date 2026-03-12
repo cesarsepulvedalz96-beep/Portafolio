@@ -1,0 +1,252 @@
+/* ===============================
+   TECH BOX
+================================ */
+
+.tech-box {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(23, 16, 46, 0.95);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1;
+  margin: 14px;
+  box-shadow:
+    0 6px 18px rgba(0, 0, 0, 0.18),
+    0 0 0 1px rgba(0, 0, 0, 0.05);
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    margin-bottom 0.3s ease;
+}
+
+/* Hover SOLO si NO está abierto */
+.tech-box:hover:not(.open) {
+  transform: scale(1.25);
+  background: rgba(25, 25, 55, 0.95);
+}
+
+/* Cuando está abierto */
+.tech-box.open {
+  z-index: 9999;
+  transform: scale(1.25);
+  background: rgba(25, 25, 55, 0.95);
+}
+
+/* ===============================
+   ICON
+================================ */
+
+.tech-icon {
+  font-size: 0.1rem;
+  transition: color 0.3s ease;
+}
+
+.tech-icon svg {
+  width: 100%;
+  height: 100%;
+  color: inherit;
+  transition: none !important;
+}
+
+/* ===============================
+   COLORES POR TECNOLOGÍA
+================================ */
+
+.tech-icon.vite svg {
+  color: #646cff !important;
+}
+.tech-icon.nodejs svg {
+  color: #3c873a !important;
+}
+.tech-icon.react-router svg {
+  color: #ca4245 !important;
+}
+.tech-icon.express svg {
+  color: #ffffff !important;
+}
+.tech-icon.xampp svg {
+  color: #fb7a24 !important;
+}
+.tech-icon.react svg {
+  color: #61dafb !important;
+}
+.tech-icon.javascript svg {
+  color: #f7df1e !important;
+}
+.tech-icon.python svg {
+  color: #3776ab !important;
+}
+.tech-icon.mongodb svg {
+  color: #47a248 !important;
+}
+.tech-icon.postgresql svg {
+  color: #336791 !important;
+}
+.tech-icon.oracle svg {
+  color: #f80000 !important;
+}
+.tech-icon.aws svg {
+  color: #ff9900 !important;
+}
+.tech-icon.chartjs svg {
+  color: #ff6384 !important;
+}
+.tech-icon.pandas svg {
+  color: #150458 !important;
+}
+.tech-icon.flask svg {
+  color: #c71818 !important;
+}
+.tech-icon.sqlite svg {
+  color: #003b57 !important;
+}
+
+/* ===============================
+   TOOLTIP
+================================ */
+
+.tech-tooltip {
+  position: absolute;
+  bottom: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.tech-box:hover .tech-tooltip {
+  opacity: 1;
+}
+
+/* ===============================
+   DESCRIPTION
+================================ */
+
+.tech-description {
+  position: absolute;
+  top: 100%; /* justo debajo del icono */
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(6, 8, 133, 0.582);
+  color: #fff;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  white-space: normal; /* permite que el texto haga wrap */
+  max-width: 280px; /* ajusta según tu gusto */
+  z-index: 100;
+  box-shadow: 0 4px 12px rgb(255, 255, 255);
+  word-wrap: break-word; /* rompe palabras largas */
+  text-align: left;
+}
+
+.tech-box.open .tech-description {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+
+/* ===============================
+   GRID
+================================ */
+
+.columns.is-multiline {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 0 1rem;
+}
+
+/* ===============================
+   MOBILE FIX 
+================================ */
+
+@media (max-width: 600px) {
+  .columns.is-multiline {
+    justify-content: center;
+    padding: 0 0.5rem;
+  }
+
+  .tech-column {
+    display: flex;
+    justify-content: center;
+  }
+
+  .tech-box {
+    position: relative;
+    cursor: pointer;
+  }
+  /* 🔥 CLAVE: reserva espacio real al abrir */
+  .tech-box.open {
+    margin-bottom: 230px;
+  }
+
+  .tech-description {
+    max-width: 90vw; /* se ajusta al ancho del móvil */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.9rem;
+    padding: 0.5rem 0.75rem;
+  }
+}
+
+@media (min-width: 601px) {
+  .tech-box.open {
+    margin-bottom: 290px;
+  }
+}
+
+/* ===============================
+   CATEGORIES ISLAND
+================================ */
+
+.categories-island {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 12px 24px;
+  margin-bottom: 2rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.199);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.548);
+}
+
+/* ===============================
+   CATEGORY BUTTONS
+================================ */
+
+.category-btn {
+  padding: 10px 22px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  background: rgba(5, 3, 53, 0.85);
+  color: #000;
+  box-shadow:
+    0 4px 12px rgb(0, 0, 0),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+.category-btn:hover,
+.category-btn.active {
+  transform: scale(1.2);
+  background: rgb(1, 2, 34);
+  box-shadow:
+    0 10px 25px rgba(211, 206, 206, 0.4),
+    0 0 0 1px rgba(255, 254, 254, 0.15);
+}

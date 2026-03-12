@@ -1,0 +1,91 @@
+/*separacion por components*/
+section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 0 8%;
+}
+
+.about-icon {
+  font-size: 4rem;
+  display: inline-block;
+}
+
+.floating {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.hero-icon {
+  font-size: 10rem;
+  color: #ffffff;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* ===========================
+   HERO BUTTON RESPONSIVE
+=========================== */
+
+.text-verde-azulado {
+  color: #ffffff;
+}
+
+.text-blanco {
+  color: #f0e0e0;
+}
+
+@media (max-width: 768px) {
+  /* Centrar contenido del Hero en mobile */
+  .hero-section .column.is-6 {
+    text-align: center;
+  }
+
+  /* Centrar el botón */
+  .hero-section .button {
+    display: inline-flex;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/*------------------------------------------------------------------------*/
+
+/* Botón normal */
+.about-section .button {
+  margin-top: 1rem;
+}
+
+/* Responsivo: centramos el botón en móviles */
+@media screen and (max-width: 768px) {
+  .about-section .column:last-child {
+    text-align: center; /* centra el contenido de la columna */
+  }
+
+  .about-section .button {
+    margin: 1rem auto 0 auto; /* opcional para asegurar centrado */
+    display: inline-block;
+  }
+}

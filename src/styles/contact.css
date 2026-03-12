@@ -1,0 +1,82 @@
+/* ===========================
+   SECCIÓN CONTACTO
+=========================== */
+.contact-section {
+  padding-top: 100px;
+}
+
+/* ===========================
+   CAJA DEL FORMULARIO
+=========================== */
+.contact-box {
+  background-color: transparent; /* eliminado rgba */
+  border-radius: 18px;
+  padding: 30px;
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.22);
+  overflow: visible;
+  will-change: transform;
+}
+
+/* Zoom + profundidad al hover */
+.contact-box:hover {
+  transform: scale(1.04) translateY(-6px);
+  box-shadow: 0 28px 55px rgba(0, 0, 0, 0.45);
+}
+
+/* ===========================
+   INPUTS & TEXTAREA
+=========================== */
+.input,
+.textarea {
+  border-radius: 14px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.85);
+  color: #000;
+  transition: all 0.25s ease;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: #555;
+}
+
+.input:focus,
+.textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(72, 95, 199, 0.35);
+}
+
+/* ===========================
+   LABELS
+=========================== */
+.label {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+/* ===========================
+   BOTONES ESTILO iPHONE
+=========================== */
+.button {
+  border-radius: 9999px;
+  padding-left: 1.6em;
+  padding-right: 1.6em;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+/* ===========================
+   MODAL ÉXITO
+=========================== */
+.contact-success {
+  border-radius: 18px;
+  padding: 30px;
+  text-align: center;
+}

@@ -1,0 +1,111 @@
+.tech-icon svg {
+  font-size: 2.6rem;
+  transition:
+    transform 0.25s ease,
+    color 0.25s ease;
+}
+
+.tech-box svg {
+  color: #6b7280;
+}
+
+.tech-box:hover svg {
+  color: white;
+}
+
+.tech-box:hover .tech-icon svg {
+  transform: scale(1.15);
+}
+
+/* Colores por tecnología */
+.tech-icon.python svg {
+  color: #3776ab;
+}
+.tech-icon.javascript svg {
+  color: #f7df1e;
+}
+.tech-icon.react svg {
+  color: #61dafb;
+}
+.tech-icon.angular svg {
+  color: #dd0031;
+}
+.tech-icon.html svg {
+  color: #e34f26;
+}
+.tech-icon.css svg {
+  color: #1572b6;
+}
+.tech-icon.bulma svg {
+  color: #00d1b2;
+}
+.tech-icon.bootstrap svg {
+  color: #7952b3;
+}
+.tech-icon.django svg {
+  color: #1e835c;
+}
+.tech-icon.node svg {
+  color: #339933;
+}
+.tech-icon.mysql svg {
+  color: #4479a1;
+}
+.tech-icon.postgresql svg {
+  color: #336791;
+}
+.tech-icon.mongodb svg {
+  color: #47a248;
+}
+.tech-icon.oracle svg {
+  color: #f80000;
+}
+.tech-icon.gitlab svg {
+  color: #fc6d26;
+}
+.tech-icon.docker svg {
+  color: #2496ed;
+}
+.tech-icon.aws svg {
+  color: #ff9900;
+}
+
+/* Animación flotante */
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.about-icon {
+  font-size: 10rem;
+  color: #fdffff;
+  filter: drop-shadow(0 0 18px rgba(18, 201, 155, 0.5));
+}
+
+.about-icon.floating {
+  animation: float 4s ease-in-out infinite;
+}
+
+/*color menu*/
+
+.island-icon svg {
+  font-size: 1.6rem;
+  transition:
+    transform 0.25s ease,
+    color 0.25s ease;
+}
+
+.island-item:hover svg {
+  transform: scale(1.15) translateY(-2px);
+}
+
+.island-item.active svg {
+  filter: drop-shadow(0 0 8px currentColor);
+}
