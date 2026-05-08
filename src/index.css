@@ -1,1 +1,18 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
 
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #150d06;
+  color: #f0dfc0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  overscroll-behavior-y: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}

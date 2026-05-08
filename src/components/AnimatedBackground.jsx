@@ -40,15 +40,15 @@ export default function AnimatedBackground() {
 
       // fondo base
       const bg = ctx.createLinearGradient(0, 0, 0, canvas.height);
-      bg.addColorStop(0, "#19193f");
-      bg.addColorStop(1, "#0c0c1e");
+      bg.addColorStop(0, "#150d06");
+      bg.addColorStop(1, "#0a0603");
       ctx.fillStyle = bg;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       // auroras
-      drawAurora(0, "rgb(182, 82, 115)", 120, 0.6);
-      drawAurora(2, "rgb(163, 44, 44)", 160, 0.4);
-      drawAurora(4, "rgb(185, 96, 45)", 140, 0.5);
+      drawAurora(0, "rgba(185, 95, 25, 0.75)", 120, 0.6);
+      drawAurora(2, "rgba(125, 35, 45, 0.7)", 160, 0.4);
+      drawAurora(4, "rgba(200, 145, 20, 0.65)", 140, 0.5);
 
       t += 0.01;
       requestAnimationFrame(animate);

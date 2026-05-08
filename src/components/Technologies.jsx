@@ -1,304 +1,279 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import {
-  FaPython,
-  FaJs,
-  FaReact,
   FaAngular,
-  FaHtml5,
-  FaCss3Alt,
-  FaBootstrap,
-  FaNodeJs,
-  FaDocker,
   FaAws,
+  FaBootstrap,
+  FaCss3Alt,
+  FaDocker,
   FaGitlab,
+  FaHtml5,
+  FaJs,
+  FaNodeJs,
+  FaPython,
+  FaReact,
   FaServer,
 } from "react-icons/fa";
 import {
-  SiDjango,
   SiBulma,
-  SiMysql,
-  SiPostgresql,
-  SiMongodb,
-  SiOracle,
-  SiVite,
-  SiReactrouter,
-  SiExpress,
   SiChartdotjs,
-  SiPandas,
+  SiDjango,
+  SiExpress,
   SiFlask,
+  SiMongodb,
+  SiMysql,
+  SiOracle,
+  SiPandas,
+  SiPostgresql,
+  SiReactrouter,
   SiSqlite,
+  SiVite,
 } from "react-icons/si";
 
 const techData = [
   {
-    category: "Lenguajes",
+    category: { es: "Lenguajes", en: "Languages" },
     items: [
       {
         name: "Python",
-        description:
-          "Lenguaje versátil usado en backend, scripting, automatización, ciencia de datos y desarrollo de aplicaciones web con frameworks como Django o Flask.",
-        logo: (
-          <span className="tech-icon python">
-            <FaPython />
-          </span>
-        ),
+        description: {
+          es: "Lenguaje versatil usado en backend, scripting, automatizacion, ciencia de datos y desarrollo de aplicaciones web con frameworks como Django o Flask.",
+          en: "Versatile language used in backend development, scripting, automation, data science, and web applications with frameworks like Django or Flask.",
+        },
+        logo: <span className="tech-icon python"><FaPython /></span>,
       },
       {
         name: "JavaScript",
-        description:
-          "Lenguaje principal para frontend y backend (Node.js). Fundamental para web interactiva y aplicaciones dinámicas.",
-        logo: (
-          <span className="tech-icon javascript">
-            {" "}
-            <FaJs />{" "}
-          </span>
-        ),
+        description: {
+          es: "Lenguaje principal para frontend y backend con Node.js. Fundamental para web interactiva y aplicaciones dinamicas.",
+          en: "Core language for frontend and backend with Node.js. Essential for interactive websites and dynamic applications.",
+        },
+        logo: <span className="tech-icon javascript"><FaJs /></span>,
       },
       {
         name: "Pandas",
-        description:
-          "Librería de Python para análisis y manipulación de datos estructurados con DataFrames.",
-        logo: (
-          <span className="tech-icon pandas">
-            <SiPandas />
-          </span>
-        ),
+        description: {
+          es: "Libreria de Python para analisis y manipulacion de datos estructurados con DataFrames.",
+          en: "Python library for analyzing and manipulating structured data with DataFrames.",
+        },
+        logo: <span className="tech-icon pandas"><SiPandas /></span>,
       },
     ],
   },
   {
-    category: "Frontend",
+    category: { es: "Frontend", en: "Frontend" },
     items: [
       {
         name: "React",
-        description:
-          "Librería para construir interfaces dinámicas y componentes reutilizables.",
-        logo: (
-          <span className="tech-icon react">
-            {" "}
-            <FaReact />{" "}
-          </span>
-        ),
+        description: {
+          es: "Libreria para construir interfaces dinamicas y componentes reutilizables.",
+          en: "Library for building dynamic interfaces and reusable components.",
+        },
+        logo: <span className="tech-icon react"><FaReact /></span>,
       },
       {
         name: "Angular",
-        description: "Framework completo para aplicaciones de gran escala.",
-        logo: (
-          <span className="tech-icon angular">
-            <FaAngular />
-          </span>
-        ),
+        description: {
+          es: "Framework completo para aplicaciones de gran escala.",
+          en: "Full framework for large-scale applications.",
+        },
+        logo: <span className="tech-icon angular"><FaAngular /></span>,
       },
       {
         name: "HTML",
-        description:
-          "Lenguaje de marcado que define la estructura de las páginas web.",
-        logo: (
-          <span className="tech-icon html">
-            <FaHtml5 />
-          </span>
-        ),
+        description: {
+          es: "Lenguaje de marcado que define la estructura de las paginas web.",
+          en: "Markup language that defines the structure of web pages.",
+        },
+        logo: <span className="tech-icon html"><FaHtml5 /></span>,
       },
       {
         name: "CSS",
-        description: "Lenguaje de estilos que define la apariencia visual.",
-        logo: (
-          <span className="tech-icon css">
-            <FaCss3Alt />
-          </span>
-        ),
+        description: {
+          es: "Lenguaje de estilos que define la apariencia visual.",
+          en: "Stylesheet language that defines visual appearance.",
+        },
+        logo: <span className="tech-icon css"><FaCss3Alt /></span>,
       },
       {
         name: "Bulma",
-        description: "Framework CSS para interfaces limpias y responsivas.",
-        logo: (
-          <span className="tech-icon bulma">
-            <SiBulma />
-          </span>
-        ),
+        description: {
+          es: "Framework CSS para interfaces limpias y responsivas.",
+          en: "CSS framework for clean and responsive interfaces.",
+        },
+        logo: <span className="tech-icon bulma"><SiBulma /></span>,
       },
       {
         name: "Bootstrap",
-        description: "Framework CSS popular para diseño rápido.",
-        logo: (
-          <span className="tech-icon bootstrap">
-            <FaBootstrap />
-          </span>
-        ),
+        description: {
+          es: "Framework CSS popular para diseno rapido.",
+          en: "Popular CSS framework for fast interface design.",
+        },
+        logo: <span className="tech-icon bootstrap"><FaBootstrap /></span>,
       },
       {
         name: "Vite",
-        description:
-          "Herramienta moderna de desarrollo y build para aplicaciones React con recarga ultra rápida.",
-        logo: (
-          <span className="tech-icon vite">
-            <SiVite />
-          </span>
-        ),
+        description: {
+          es: "Herramienta moderna de desarrollo y build para aplicaciones React con recarga rapida.",
+          en: "Modern development and build tool for React apps with fast reloads.",
+        },
+        logo: <span className="tech-icon vite"><SiVite /></span>,
       },
       {
         name: "React Router",
-        description: "Manejo de navegación y rutas en aplicaciones SPA.",
-        logo: (
-          <span className="tech-icon react-router">
-            <SiReactrouter />
-          </span>
-        ),
+        description: {
+          es: "Manejo de navegacion y rutas en aplicaciones SPA.",
+          en: "Navigation and routing management for SPA applications.",
+        },
+        logo: <span className="tech-icon react-router"><SiReactrouter /></span>,
       },
       {
         name: "Chart.js",
-        description:
-          "Librería para crear gráficos interactivos y visualizaciones de datos en aplicaciones web.",
-        logo: (
-          <span className="tech-icon chartjs">
-            <SiChartdotjs />
-          </span>
-        ),
+        description: {
+          es: "Libreria para crear graficos interactivos y visualizaciones de datos en aplicaciones web.",
+          en: "Library for creating interactive charts and data visualizations in web applications.",
+        },
+        logo: <span className="tech-icon chartjs"><SiChartdotjs /></span>,
       },
     ],
   },
   {
-    category: "Backend",
+    category: { es: "Backend", en: "Backend" },
     items: [
       {
         name: "Django",
-        description: "Framework robusto en Python con ORM y admin integrado.",
-        logo: (
-          <span className="tech-icon django">
-            <SiDjango />
-          </span>
-        ),
+        description: {
+          es: "Framework robusto en Python con ORM y panel de administracion integrado.",
+          en: "Robust Python framework with ORM and built-in admin panel.",
+        },
+        logo: <span className="tech-icon django"><SiDjango /></span>,
       },
       {
         name: "Node.js",
-        description: "Plataforma de backend ligera con JavaScript.",
-        logo: (
-          <span className="tech-icon nodejs">
-            <FaNodeJs />
-          </span>
-        ),
+        description: {
+          es: "Plataforma de backend ligera basada en JavaScript.",
+          en: "Lightweight backend platform based on JavaScript.",
+        },
+        logo: <span className="tech-icon nodejs"><FaNodeJs /></span>,
       },
       {
         name: "Express.js",
-        description: "Framework para crear APIs REST en Node.js.",
-        logo: (
-          <span className="tech-icon express">
-            <SiExpress />
-          </span>
-        ),
+        description: {
+          es: "Framework para crear APIs REST en Node.js.",
+          en: "Framework for building REST APIs in Node.js.",
+        },
+        logo: <span className="tech-icon express"><SiExpress /></span>,
       },
       {
         name: "Flask",
-        description:
-          "Microframework de Python para construir APIs y aplicaciones web ligeras.",
-        logo: (
-          <span className="tech-icon flask">
-            <SiFlask />
-          </span>
-        ),
+        description: {
+          es: "Microframework de Python para construir APIs y aplicaciones web ligeras.",
+          en: "Python microframework for building APIs and lightweight web applications.",
+        },
+        logo: <span className="tech-icon flask"><SiFlask /></span>,
       },
     ],
   },
   {
-    category: "Bases de Datos",
+    category: { es: "Bases de Datos", en: "Databases" },
     items: [
       {
         name: "MySQL",
-        description: "Base de datos relacional ampliamente usada.",
-        logo: (
-          <span className="tech-icon mysql">
-            <SiMysql />
-          </span>
-        ),
+        description: {
+          es: "Base de datos relacional ampliamente usada.",
+          en: "Widely used relational database.",
+        },
+        logo: <span className="tech-icon mysql"><SiMysql /></span>,
       },
       {
         name: "Oracle",
-        description: "Base de datos empresarial de alto rendimiento.",
-        logo: (
-          <span className="tech-icon postgresql">
-            <SiOracle />
-          </span>
-        ),
+        description: {
+          es: "Base de datos empresarial de alto rendimiento.",
+          en: "High-performance enterprise database.",
+        },
+        logo: <span className="tech-icon postgresql"><SiOracle /></span>,
       },
       {
         name: "MongoDB",
-        description: "Base de datos NoSQL flexible y escalable.",
-        logo: (
-          <span className="tech-icon mongodb">
-            <SiMongodb />
-          </span>
-        ),
+        description: {
+          es: "Base de datos NoSQL flexible y escalable.",
+          en: "Flexible and scalable NoSQL database.",
+        },
+        logo: <span className="tech-icon mongodb"><SiMongodb /></span>,
       },
       {
         name: "PostgreSQL",
-        description: "Base de datos relacional avanzada.",
-        logo: (
-          <span className="tech-icon oracle">
-            <SiPostgresql />
-          </span>
-        ),
+        description: {
+          es: "Base de datos relacional avanzada.",
+          en: "Advanced relational database.",
+        },
+        logo: <span className="tech-icon oracle"><SiPostgresql /></span>,
       },
       {
         name: "SQLite",
-        description:
-          "Base de datos relacional embebida, ideal para aplicaciones ligeras y prototipos.",
-        logo: (
-          <span className="tech-icon sqlite">
-            <SiSqlite />
-          </span>
-        ),
+        description: {
+          es: "Base de datos relacional embebida, ideal para aplicaciones ligeras y prototipos.",
+          en: "Embedded relational database, ideal for lightweight apps and prototypes.",
+        },
+        logo: <span className="tech-icon sqlite"><SiSqlite /></span>,
       },
     ],
   },
   {
-    category: "Infraestructura y DevOps",
+    category: { es: "Infraestructura y DevOps", en: "Infrastructure and DevOps" },
     items: [
       {
         name: "GitLab",
-        description: "Control de versiones y CI/CD.",
-        logo: (
-          <span className="tech-icon gitlab">
-            <FaGitlab />
-          </span>
-        ),
+        description: {
+          es: "Control de versiones y CI/CD.",
+          en: "Version control and CI/CD.",
+        },
+        logo: <span className="tech-icon gitlab"><FaGitlab /></span>,
       },
       {
         name: "Docker",
-        description: "Contenedores para entornos consistentes.",
-        logo: (
-          <span className="tech-icon docker">
-            <FaDocker />
-          </span>
-        ),
+        description: {
+          es: "Contenedores para entornos consistentes.",
+          en: "Containers for consistent environments.",
+        },
+        logo: <span className="tech-icon docker"><FaDocker /></span>,
       },
       {
         name: "AWS",
-        description: "Servicios en la nube escalables.",
-        logo: (
-          <span className="tech-icon aws">
-            <FaAws />
-          </span>
-        ),
+        description: {
+          es: "Servicios en la nube escalables.",
+          en: "Scalable cloud services.",
+        },
+        logo: <span className="tech-icon aws"><FaAws /></span>,
       },
       {
         name: "XAMPP",
-        description:
-          "Entorno de desarrollo local para aplicaciones web (Apache y MySQL).",
-        logo: (
-          <span className="tech-icon xampp">
-            <FaServer />
-          </span>
-        ),
+        description: {
+          es: "Entorno de desarrollo local para aplicaciones web con Apache y MySQL.",
+          en: "Local development environment for web apps with Apache and MySQL.",
+        },
+        logo: <span className="tech-icon xampp"><FaServer /></span>,
       },
     ],
   },
 ];
 
-export default function Technologies() {
+const technologiesText = {
+  es: {
+    title: "Tecnologias",
+    intro: "Estas son las tecnologias que he utilizado y aprendido tanto a nivel academico como en proyectos personales, fortaleciendo mis habilidades en el desarrollo Full Stack.",
+  },
+  en: {
+    title: "Technologies",
+    intro: "These are the technologies I have used and learned both academically and through personal projects, strengthening my Full Stack development skills.",
+  },
+};
+
+export default function Technologies({ language }) {
   const [activeTab, setActiveTab] = useState(0);
   const [openTech, setOpenTech] = useState(null);
+  const t = technologiesText[language];
 
   useEffect(() => {
     AOS.init({ duration: 800, once: true, easing: "ease-out-cubic" });
@@ -308,37 +283,35 @@ export default function Technologies() {
     <section id="tecnologias" className="section technologies-section">
       <div className="container is-max-desktop">
         <h2 className="title is-2 has-text-centered mb-6" data-aos="fade-up">
-          Tecnologías
+          {t.title}
         </h2>
-        <p className="mb-4 text-blanco has-text-centered">
-          Estas son las tecnologías que he utilizado y aprendido tanto a nivel
-          académico como en proyectos personales, fortaleciendo mis habilidades
-          en el desarrollo Full Stack.
+        <p className="mb-4 text-blanco has-text-centered is-size-5">
+          {t.intro}
         </p>
 
-        {/* Tabs */}
         <div className="categories-island">
           {techData.map((category, idx) => (
             <button
-              key={idx}
+              key={category.category.es}
               className={`category-btn ${activeTab === idx ? "active" : ""}`}
               onClick={() => setActiveTab(idx)}
+              type="button"
             >
-              <a>{category.category}</a>
+              <a>{category.category[language]}</a>
             </button>
           ))}
         </div>
 
-        {/* Grid de iconos tipo app */}
         <div className="columns is-multiline is-variable is-5 is-centered">
           {techData[activeTab].items.map((tech, tid) => (
             <div
-              key={tid}
+              key={tech.name}
               className="column is-2 tech-column"
               data-aos="zoom-in"
             >
               <div
-                className={`tech-box ${openTech === tech.name ? "open" : ""}`}
+                className={`tech-box ${openTech === tech.name ? "open" : ""} ${openTech !== tech.name ? "hint-pulse" : ""}`}
+                style={{ "--pulse-delay": `${tid * 0.24}s` }}
                 onClick={() =>
                   setOpenTech(openTech === tech.name ? null : tech.name)
                 }
@@ -347,7 +320,7 @@ export default function Technologies() {
                 <span className="tech-tooltip">{tech.name}</span>
 
                 {openTech === tech.name && (
-                  <div className="tech-description">{tech.description}</div>
+                  <div className="tech-description">{tech.description[language]}</div>
                 )}
               </div>
             </div>
