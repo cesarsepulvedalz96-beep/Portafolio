@@ -64,52 +64,11 @@
   flex-shrink: 0;
 }
 
-.contact-feedback-cta {
-  margin-top: 1.4rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid rgba(255, 190, 80, 0.14);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  color: #e8d5b0;
-}
-
-.contact-feedback-cta p {
-  margin: 0;
-  font-weight: 700;
-  line-height: 1.35;
-}
-
 .contact-feedback-button {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
   flex-shrink: 0;
-}
-
-.contact-feedback-inline {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 0.35s ease;
-}
-
-.contact-feedback-inline.open {
-  grid-template-rows: 1fr;
-}
-
-.contact-feedback-inline > div {
-  overflow: hidden;
-  padding-top: 0;
-  transition: padding-top 0.35s ease;
-}
-
-.contact-feedback-inline.open > div {
-  padding-top: 1.15rem;
-}
-
-.contact-feedback-inline .textarea {
-  min-height: 82px;
 }
 
 /* ===========================
@@ -273,6 +232,32 @@
   transform: translateY(-2px) rotate(-10deg);
 }
 
+.contact-feedback-modal {
+  background: rgba(20, 10, 4, 0.96) !important;
+  border: 1px solid rgba(255, 190, 80, 0.22);
+  border-radius: 18px;
+  color: #f0dfc0;
+  max-width: 620px;
+  padding: 1.75rem;
+}
+
+.contact-feedback-modal .title {
+  margin-bottom: 1.1rem;
+  text-align: center;
+}
+
+.contact-feedback-modal .textarea {
+  min-height: 92px;
+}
+
+.contact-feedback-modal-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
 @media screen and (max-width: 768px) {
   .contact-box {
     padding: 1.25rem;
@@ -283,12 +268,6 @@
     min-height: 112px;
   }
 
-  .contact-feedback-cta {
-    align-items: stretch;
-    flex-direction: column;
-    text-align: center;
-  }
-
   .contact-social-links {
     align-items: center;
     flex-direction: column;
@@ -297,6 +276,11 @@
   .contact-success {
     width: calc(100vw - 32px);
     padding: 1.5rem;
+  }
+
+  .contact-feedback-modal {
+    width: calc(100vw - 32px);
+    padding: 1.25rem;
   }
 }
 
@@ -325,11 +309,6 @@
 
   .textarea {
     min-height: 112px;
-  }
-
-  .contact-feedback-cta {
-    margin-top: 1rem;
-    padding-top: 1rem;
   }
 
   .contact-social {
@@ -396,14 +375,6 @@
   max-height: none;
 }
 
-.contact-feedback-cta {
-  flex-wrap: wrap;
-}
-
-.contact-feedback-inline.open > div {
-  overflow: visible;
-}
-
 .contact-social-links {
   max-width: 100%;
 }
@@ -429,12 +400,6 @@
 
   .input {
     height: 2.35em;
-  }
-
-  .contact-feedback-cta {
-    align-items: stretch;
-    flex-direction: column;
-    text-align: center;
   }
 
   .contact-feedback-button,

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { FaCat, FaCoffee, FaCommentDots, FaGithub, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import { FaCat, FaCoffee, FaGithub, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 
 const socialLinks = [
   {
@@ -46,7 +46,8 @@ const contactText = {
     send: "Enviar",
     feedbackTitle: "Tu comentario me ayuda para mejorar mi portafolio",
     feedbackShow: "Dejar comentario",
-    feedbackHide: "Ocultar comentario",
+    feedbackSkip: "Omitir",
+    feedbackSend: "Enviar con comentario",
     liked: "Que aspectos te gustaron?",
     likedPlaceholder: "Cuentame que te gusto del portafolio",
     improve: "Que podria mejorar?",
@@ -80,7 +81,8 @@ const contactText = {
     send: "Send",
     feedbackTitle: "Your comment helps me improve my portfolio",
     feedbackShow: "Leave feedback",
-    feedbackHide: "Hide feedback",
+    feedbackSkip: "Skip",
+    feedbackSend: "Send with feedback",
     liked: "What aspects did you like?",
     likedPlaceholder: "Tell me what you liked about the portfolio",
     improve: "What could I improve?",
@@ -105,7 +107,7 @@ export default function Contact({ language }) {
   const [botTrap, setBotTrap] = useState("");
   const [loading, setLoading] = useState(false);
   const [successModal, setSuccessModal] = useState(false);
-  const [feedbackOpen, setFeedbackOpen] = useState(false);
+  const [feedbackPromptOpen, setFeedbackPromptOpen] = useState(false);
   const [feedbackData, setFeedbackData] = useState({
     liked: "", improve: "",
   });
@@ -170,6 +172,36 @@ export default function Contact({ language }) {
     setFeedbackData({ ...feedbackData, [name]: value });
   };
 
+  const resetFormState = () => {
+    setFormData({ name: "", email: "", subject: "", message: "" });
+    setFeedbackData({ liked: "", improve: "" });
+    setFeedbackPromptOpen(false);
+    setNotRobot(false);
+    setRecaptchaToken("");
+    if (enableGoogleRecaptcha && window.grecaptcha && recaptchaWidgetId.current !== null) {
+      window.grecaptcha.reset(recaptchaWidgetId.current);
+    }
+    setBotTrap("");
+  };
+
+  const sendMail = (includeFeedback = true) => {
+    setLoading(true);
+    setTimeout(() => {
+      const selectedFeedback = includeFeedback
+        ? feedbackData
+        : { liked: "", improve: "" };
+      const subject = encodeURIComponent(formData.subject);
+      const body = encodeURIComponent(
+        `${t.name.replace(" *", "")}: ${formData.name}\nEmail: ${formData.email}\n\n${t.message.replace(" *", "")}:\n${formData.message}\n\n${t.mailCommentTitle}:\n${t.mailLiked}:\n${selectedFeedback.liked || t.notIndicated}\n\n${t.mailImprove}:\n${selectedFeedback.improve || t.notIndicated}`
+      );
+
+      window.location.href = `mailto:${contactEmail}?subject=${subject}&body=${body}`;
+      setLoading(false);
+      setSuccessModal(true);
+      resetFormState();
+    }, 700);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (botTrap) return;
@@ -195,26 +227,7 @@ export default function Contact({ language }) {
       return;
     }
 
-    setLoading(true);
-    setTimeout(() => {
-      const subject = encodeURIComponent(formData.subject);
-      const body = encodeURIComponent(
-        `${t.name.replace(" *", "")}: ${formData.name}\nEmail: ${formData.email}\n\n${t.message.replace(" *", "")}:\n${formData.message}\n\n${t.mailCommentTitle}:\n${t.mailLiked}:\n${feedbackData.liked || t.notIndicated}\n\n${t.mailImprove}:\n${feedbackData.improve || t.notIndicated}`
-      );
-
-      window.location.href = `mailto:${contactEmail}?subject=${subject}&body=${body}`;
-      setLoading(false);
-      setSuccessModal(true);
-      setFormData({ name: "", email: "", subject: "", message: "" });
-      setFeedbackData({ liked: "", improve: "" });
-      setFeedbackOpen(false);
-      setNotRobot(false);
-      setRecaptchaToken("");
-      if (enableGoogleRecaptcha && window.grecaptcha && recaptchaWidgetId.current !== null) {
-        window.grecaptcha.reset(recaptchaWidgetId.current);
-      }
-      setBotTrap("");
-    }, 2000);
+    setFeedbackPromptOpen(true);
   };
 
   return (
@@ -332,48 +345,6 @@ export default function Contact({ language }) {
                 </div>
               </form>
 
-              <div className="contact-feedback-cta">
-                <p>{t.feedbackTitle}</p>
-                <button
-                  type="button"
-                  className="button is-primary contact-feedback-button"
-                  onClick={() => setFeedbackOpen((prev) => !prev)}
-                >
-                  <FaCommentDots />
-                  <span>{feedbackOpen ? t.feedbackHide : t.feedbackShow}</span>
-                </button>
-              </div>
-
-              <div className={`contact-feedback-inline ${feedbackOpen ? "open" : ""}`}>
-                <div>
-                  <div className="field">
-                    <label className="label">{t.liked}</label>
-                    <div className="control">
-                      <textarea
-                        className="textarea"
-                        placeholder={t.likedPlaceholder}
-                        name="liked"
-                        value={feedbackData.liked}
-                        onChange={handleFeedbackChange}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="field">
-                    <label className="label">{t.improve}</label>
-                    <div className="control">
-                      <textarea
-                        className="textarea"
-                        placeholder={t.improvePlaceholder}
-                        name="improve"
-                        value={feedbackData.improve}
-                        onChange={handleFeedbackChange}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
               <div className="contact-social" data-aos="fade-up">
                 <p className="contact-social-title">
                   {t.social}
@@ -398,6 +369,62 @@ export default function Contact({ language }) {
           </div>
         </div>
       </div>
+
+      {feedbackPromptOpen && (
+        <div className="modal is-active">
+          <div className="modal-background" onClick={() => setFeedbackPromptOpen(false)} />
+          <div className="contact-feedback-modal modal-content box">
+            <h3 className="title is-4">{t.feedbackTitle}</h3>
+
+            <div className="field">
+              <label className="label">{t.liked}</label>
+              <div className="control">
+                <textarea
+                  className="textarea"
+                  placeholder={t.likedPlaceholder}
+                  name="liked"
+                  value={feedbackData.liked}
+                  onChange={handleFeedbackChange}
+                />
+              </div>
+            </div>
+
+            <div className="field">
+              <label className="label">{t.improve}</label>
+              <div className="control">
+                <textarea
+                  className="textarea"
+                  placeholder={t.improvePlaceholder}
+                  name="improve"
+                  value={feedbackData.improve}
+                  onChange={handleFeedbackChange}
+                />
+              </div>
+            </div>
+
+            <div className="contact-feedback-modal-actions">
+              <button
+                className="button is-primary"
+                type="button"
+                onClick={() => sendMail(false)}
+                disabled={loading}
+              >
+                {t.feedbackSkip}
+              </button>
+              <button
+                className={`button is-primary contact-send-button ${loading ? "is-sending" : ""}`}
+                type="button"
+                onClick={() => sendMail(true)}
+                disabled={loading}
+                aria-busy={loading}
+              >
+                {loading && <FaCoffee className="contact-send-icon" />}
+                <span>{loading ? t.sending : t.feedbackSend}</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {successModal && (
         <div className="modal is-active">

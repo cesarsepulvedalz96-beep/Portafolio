@@ -72,7 +72,7 @@ const projectsData = [
       en: "React web platform that lets users choose gym plans, customize additional services, and perform simulated payments through a Webpay integration.",
     },
     technologies: ["React", "Nodejs", "JavaScript", "Bulma", "CSS", "HTML", "Express.js", "Reactrouter", "Vite"],
-    github: "https://github.com/cesarsepulvedalz96-beep/KinoAnalytica",
+    github: "https://github.com/cesarsepulvedalz96-beep/Powerfull-gym",
   },
   {
     title: "KINOANALYTICA",
