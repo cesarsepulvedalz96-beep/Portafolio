@@ -44,7 +44,7 @@ export default function About({ language }) {
             <div className="about-profile-frame floating">
               <img
                 className="about-profile-image"
-                src="/images/about-profile.png"
+                src={`${import.meta.env.BASE_URL}images/about-profile.png`}
                 alt={t.alt}
               />
             </div>

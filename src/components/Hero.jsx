@@ -7,7 +7,8 @@ const heroText = {
   es: {
     role: "DESARROLLADOR FULL STACK",
     title: "Hola, mi nombre es Cesar Sepulveda",
-    intro: "Soy Analista Programador con enfoque en desarrollo Full Stack y aprendizaje constante. Me considero autodidacta, curioso y comprometido con mejorar cada dia, tanto en lo tecnico como en lo profesional.",
+    intro:
+      "Soy Analista Programador con enfoque en desarrollo Full Stack y aprendizaje constante. Me considero autodidacta, curioso y comprometido con mejorar cada dia, tanto en lo tecnico como en lo profesional.",
     projects: "Ver mis proyectos",
     download: "Descargar CV",
     loading: "Preparando cafe...",
@@ -16,7 +17,8 @@ const heroText = {
   en: {
     role: "FULL STACK DEVELOPER",
     title: "Hi, my name is Cesar Sepulveda",
-    intro: "I am a Programming Analyst focused on Full Stack development and continuous learning. I consider myself self-taught, curious, and committed to improving every day, both technically and professionally.",
+    intro:
+      "I am a Programming Analyst focused on Full Stack development and continuous learning. I consider myself self-taught, curious, and committed to improving every day, both technically and professionally.",
     projects: "View my projects",
     download: "Download CV",
     loading: "Preparing coffee...",
@@ -61,23 +63,16 @@ export default function Hero({ language }) {
       <div className="container is-max-desktop">
         <div className="columns is-vcentered">
           <div className="column is-6" data-aos="fade-right">
-            <p className="is-uppercase text-blanco mb-2 is-size-6">
-              {t.role}
-            </p>
+            <p className="is-uppercase text-blanco mb-2 is-size-6">{t.role}</p>
 
             <h1 className="title text-verde-azulado is-1">
               {t.title} <br />
             </h1>
 
-            <p className="subtitle text-blanco is-4 mt-4">
-              {t.intro}
-            </p>
+            <p className="subtitle text-blanco is-4 mt-4">{t.intro}</p>
 
             <div className="buttons mt-5">
-              <button
-                className="button is-primary"
-                onClick={scrollToProjects}
-              >
+              <button className="button is-primary" onClick={scrollToProjects}>
                 {t.projects}
               </button>
               <a
@@ -97,7 +92,7 @@ export default function Hero({ language }) {
             <div className="hero-profile-frame">
               <img
                 className="hero-profile-image"
-                src="/images/hero-profile.png"
+                src={`${import.meta.env.BASE_URL}images/hero-profile.png`}
                 alt={t.alt}
               />
             </div>
