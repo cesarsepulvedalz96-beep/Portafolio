@@ -1,18 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { FaCat, FaCoffee, FaGithub, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import { FaCat, FaCoffee, FaGithub, FaLinkedinIn } from "react-icons/fa";
 
 const socialLinks = [
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/c%C3%A9sar-sep%C3%BAlveda-71b8b3365",
     icon: <FaLinkedinIn />,
-  },
-  {
-    label: "Instagram",
-    href: "https://www.instagram.com/",
-    icon: <FaInstagram />,
   },
   {
     label: "GitHub",
@@ -24,6 +19,13 @@ const socialLinks = [
 const recaptchaSiteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 const enableGoogleRecaptcha = import.meta.env.VITE_ENABLE_RECAPTCHA === "true";
 const contactEmail = import.meta.env.VITE_CONTACT_EMAIL || "cesar.trunks@gmail.com";
+const contactEndpoint =
+  import.meta.env.VITE_CONTACT_ENDPOINT ||
+  `https://formsubmit.co/ajax/${contactEmail}`;
+const emailJsServiceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const emailJsTemplateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const emailJsPublicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+const emailJsEndpoint = "https://api.emailjs.com/api/v1.0/email/send";
 
 const contactText = {
   es: {
@@ -44,6 +46,7 @@ const contactText = {
     robot: "No soy un robot *",
     sending: "Preparando envio...",
     send: "Enviar",
+    sendError: "No se pudo enviar el mensaje. Intenta nuevamente en unos minutos.",
     feedbackTitle: "Tu comentario me ayuda para mejorar mi portafolio",
     feedbackShow: "Dejar comentario",
     feedbackSkip: "Omitir",
@@ -59,6 +62,7 @@ const contactText = {
     mailCommentTitle: "Comentario opcional sobre el portafolio",
     mailLiked: "Aspectos que le gustaron",
     mailImprove: "Aspectos que podria mejorar",
+    mailFrom: "Nuevo mensaje desde el portafolio",
     notIndicated: "No indicado",
   },
   en: {
@@ -79,6 +83,7 @@ const contactText = {
     robot: "I am not a robot *",
     sending: "Preparing delivery...",
     send: "Send",
+    sendError: "The message could not be sent. Please try again in a few minutes.",
     feedbackTitle: "Your comment helps me improve my portfolio",
     feedbackShow: "Leave feedback",
     feedbackSkip: "Skip",
@@ -94,6 +99,7 @@ const contactText = {
     mailCommentTitle: "Optional portfolio feedback",
     mailLiked: "Aspects they liked",
     mailImprove: "Aspects I could improve",
+    mailFrom: "New message from the portfolio",
     notIndicated: "Not indicated",
   },
 };
@@ -184,22 +190,100 @@ export default function Contact({ language }) {
     setBotTrap("");
   };
 
-  const sendMail = (includeFeedback = true) => {
+  const sendMail = async (includeFeedback = true) => {
     setLoading(true);
-    setTimeout(() => {
+    try {
       const selectedFeedback = includeFeedback
         ? feedbackData
         : { liked: "", improve: "" };
-      const subject = encodeURIComponent(formData.subject);
-      const body = encodeURIComponent(
-        `${t.name.replace(" *", "")}: ${formData.name}\nEmail: ${formData.email}\n\n${t.message.replace(" *", "")}:\n${formData.message}\n\n${t.mailCommentTitle}:\n${t.mailLiked}:\n${selectedFeedback.liked || t.notIndicated}\n\n${t.mailImprove}:\n${selectedFeedback.improve || t.notIndicated}`
-      );
 
-      window.location.href = `mailto:${contactEmail}?subject=${subject}&body=${body}`;
-      setLoading(false);
+      if (emailJsServiceId && emailJsTemplateId && emailJsPublicKey) {
+        const fullMessage = [
+          `${t.name.replace(" *", "")}: ${formData.name}`,
+          `Email: ${formData.email}`,
+          `${t.subject.replace(" *", "")}: ${formData.subject}`,
+          "",
+          `${t.message.replace(" *", "")}:`,
+          formData.message,
+          "",
+          `${t.mailCommentTitle}:`,
+          `${t.mailLiked}: ${selectedFeedback.liked || t.notIndicated}`,
+          `${t.mailImprove}: ${selectedFeedback.improve || t.notIndicated}`,
+        ].join("\n");
+
+        const response = await fetch(emailJsEndpoint, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            service_id: emailJsServiceId,
+            template_id: emailJsTemplateId,
+            user_id: emailJsPublicKey,
+            template_params: {
+              to_email: contactEmail,
+              name: formData.name,
+              email: formData.email,
+              user_name: formData.name,
+              user_email: formData.email,
+              from_name: formData.name,
+              from_email: formData.email,
+              reply_to: formData.email,
+              subject: formData.subject,
+              message: fullMessage,
+              full_message: fullMessage,
+              user_message: formData.message,
+              portfolio_feedback_liked: selectedFeedback.liked || t.notIndicated,
+              portfolio_feedback_improve: selectedFeedback.improve || t.notIndicated,
+              feedback_liked: selectedFeedback.liked || t.notIndicated,
+              feedback_improve: selectedFeedback.improve || t.notIndicated,
+            },
+          }),
+        });
+
+        if (!response.ok) {
+          const errorText = await response.text().catch(() => "");
+          throw new Error(errorText || "EmailJS request failed");
+        }
+
+        setSuccessModal(true);
+        resetFormState();
+        return;
+      }
+
+      const payload = new FormData();
+
+      payload.append("_subject", `${t.mailFrom}: ${formData.subject}`);
+      payload.append("_template", "table");
+      payload.append("_captcha", "false");
+      payload.append("name", formData.name);
+      payload.append("email", formData.email);
+      payload.append("subject", formData.subject);
+      payload.append("message", formData.message);
+      payload.append("feedback_liked", selectedFeedback.liked || t.notIndicated);
+      payload.append("feedback_improve", selectedFeedback.improve || t.notIndicated);
+
+      const response = await fetch(contactEndpoint, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+        },
+        body: payload,
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => null);
+        throw new Error(errorData?.message || "Contact request failed");
+      }
+
       setSuccessModal(true);
       resetFormState();
-    }, 700);
+    } catch (error) {
+      console.error(error);
+      alert(`${t.sendError}\n\n${error.message}`);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleSubmit = (e) => {
