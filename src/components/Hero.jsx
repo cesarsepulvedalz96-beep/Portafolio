@@ -92,7 +92,7 @@ export default function Hero({ language }) {
             <div className="hero-profile-frame">
               <img
                 className="hero-profile-image"
-                src={`${import.meta.env.BASE_URL}images/hero-profile.png`}
+                src={`${import.meta.env.BASE_URL}images/hero-profile.webp`}
                 alt={t.alt}
               />
             </div>

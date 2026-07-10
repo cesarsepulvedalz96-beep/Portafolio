@@ -16,23 +16,23 @@ section {
    Para agregar imagen: .hero-section { background-image: url('/images/hero-bg.jpg'); } */
 
 .hero-section {
-  background-image: url("/images/cafe2.png");
+  background-image: url("/images/cafe2.webp");
 }
 
 .about-section {
-  background-image: url("/images/cafe1.png");
+  background-image: url("/images/cafe1.webp");
 }
 
 .technologies-section {
-  background-image: url("/images/cafe3.png");
+  background-image: url("/images/cafe3.webp");
 }
 
 .projects-section {
-  background-image: url("/images/cafe4.png");
+  background-image: url("/images/cafe4.webp");
 }
 
 .contact-section {
-  background-image: url("/images/cafe5.png");
+  background-image: url("/images/cafe5.webp");
 }
 
 section::before {
