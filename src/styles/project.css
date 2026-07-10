@@ -353,7 +353,7 @@
    TECH TAG COLORS
 =========================== */
 .tech-tag.react svg        { color: #61dafb !important; }
-.tech-tag.javascript svg   { color: #f7df1e !important; }
+.tech-tag.javascript svg   { color: #a39212 !important; }
 .tech-tag.python svg       { color: #3776ab !important; }
 .tech-tag.nodejs svg       { color: #3c873a !important; }
 .tech-tag.django svg       { color: #092e20 !important; }
@@ -370,12 +370,17 @@
 .tech-tag.gitlab svg       { color: #fc6d26 !important; }
 .tech-tag.reactrouter svg  { color: #ca4245 !important; }
 .tech-tag.vite svg         { color: #646cff !important; }
-.tech-tag.expressjs svg    { color: #ffffff !important; }
+.tech-tag.tailwindcss svg  { color: #076374 !important; }
+.tech-tag.nextjs svg       { color: #000000 !important; }
+.tech-tag.nestjs svg       { color: #ff6384 !important; }
+.tech-tag.expressjs svg    { color: #0a0a0a !important; }
 .tech-tag.xampp svg        { color: #fb7a24 !important; }
 .tech-tag.pandas svg       { color: #150458 !important; }
 .tech-tag.sqlite svg       { color: #003b57 !important; }
 .tech-tag.chartjs svg      { color: #ff6384 !important; }
 .tech-tag.flask svg        { color: #e01010 !important; }
+.tech-tag.typescript svg   { color: #3178c6 !important; }
+.tech-tag.kotlin svg       { color: #734f96 !important; }
 
 /* ===========================
    RESPONSIVE

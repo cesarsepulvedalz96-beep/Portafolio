@@ -28,6 +28,11 @@ import {
   SiPandas,
   SiFlask,
   SiSqlite,
+  SiTailwindcss,
+  SiNextdotjs,
+  SiNestjs,
+  SiTypescript,
+  SiKotlin,
 } from "react-icons/si";
 
 const techIcons = {
@@ -55,6 +60,11 @@ const techIcons = {
   Pandas: <SiPandas />,
   Flask: <SiFlask />,
   SQLite: <SiSqlite />,
+  tailwindcss: <SiTailwindcss />,
+  nextjs: <SiNextdotjs />,
+  nestjs: <SiNestjs />,
+  typescript: <SiTypescript />,
+  kotlin: <SiKotlin />,
 };
 
 const projectsData = [
@@ -174,6 +184,49 @@ const projectsData = [
     ],
     github: "https://github.com/cesarsepulvedalz96-beep/KinoAnalytica",
   },
+  {
+    title: {es: "Pagina de ServiFrio", en: "ServiFrio Website"},
+    subtitle: {
+      es: "Sitio web corporativo para servicios de climatización y refrigeración.",
+      en: "Corporate website for air conditioning and refrigeration services.",
+    },
+    images: [
+      `${import.meta.env.BASE_URL}images/imagesServi/part-1.png`,
+      `${import.meta.env.BASE_URL}images/imagesServi/part-2.png`,
+      `${import.meta.env.BASE_URL}images/imagesServi/part-3.png`,
+      `${import.meta.env.BASE_URL}images/imagesServi/part-4.png`,
+      `${import.meta.env.BASE_URL}images/imagesServi/part-5.png`,
+      `${import.meta.env.BASE_URL}images/imagesServi/part-6.png`,
+      `${import.meta.env.BASE_URL}images/imagesServi/part-7.png`,
+      `${import.meta.env.BASE_URL}images/imagesServi/part-8.png`,
+      `${import.meta.env.BASE_URL}images/imagesServi/part-9.png`,
+      `${import.meta.env.BASE_URL}images/imagesServi/part-10.png`,
+      `${import.meta.env.BASE_URL}images/imagesServi/part-11.png`,
+      `${import.meta.env.BASE_URL}images/imagesServi/part-12.png`,
+      `${import.meta.env.BASE_URL}images/imagesServi/part-13.png`,
+      `${import.meta.env.BASE_URL}images/imagesServi/part-14.png`,
+      `${import.meta.env.BASE_URL}images/imagesServi/part-15.png`,
+      `${import.meta.env.BASE_URL}images/imagesServi/part-16.png`,
+      `${import.meta.env.BASE_URL}images/imagesServi/part-17.png`,
+      `${import.meta.env.BASE_URL}images/imagesServi/part-18.png`,
+      `${import.meta.env.BASE_URL}images/imagesServi/part-19.png`,
+      `${import.meta.env.BASE_URL}images/imagesServi/part-20.png`,
+    ],
+    description: {
+      es: "Sitio web desarrollado para ServiFrio, empresa especializada en instalación, mantención y reparación de equipos de aire acondicionado y refrigeración. La plataforma presenta los servicios ofrecidos, información de contacto y una experiencia moderna orientada a facilitar la comunicación con los clientes.",
+      en: "Website developed for ServiFrio, a company specialized in air conditioning and refrigeration installation, maintenance, and repair services. The platform showcases the company's services, contact information, and provides a modern user experience designed to improve customer communication.",
+    },
+    technologies: [
+      "JavaScript",
+      "HTML",
+      "CSS",
+      "React",
+      "Vite",
+      "tailwindcss",
+    ],
+    github: "https://github.com/cesarsepulvedalz96-beep/ServiFrio_Web",
+  },
+
 ];
 
 const PROJECTS_PER_PAGE = 2;

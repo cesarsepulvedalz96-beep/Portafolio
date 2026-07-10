@@ -29,6 +29,11 @@ import {
   SiReactrouter,
   SiSqlite,
   SiVite,
+  SiTailwindcss,
+  SiNextdotjs,
+  SiNestjs,
+  SiTypescript,
+  SiKotlin,
 } from "react-icons/si";
 
 const techData = [
@@ -52,13 +57,21 @@ const techData = [
         logo: <span className="tech-icon javascript"><FaJs /></span>,
       },
       {
-        name: "Pandas",
+        name: "TypeScript",
         description: {
-          es: "Libreria de Python para analisis y manipulacion de datos estructurados con DataFrames.",
-          en: "Python library for analyzing and manipulating structured data with DataFrames.",
+          es: "Superset de JavaScript que añade tipado estatico y mejora la escalabilidad y mantenibilidad del codigo.",
+          en: "Superset of JavaScript that adds static typing and improves scalability and maintainability of code.",
         },
-        logo: <span className="tech-icon pandas"><SiPandas /></span>,
+        logo: <span className="tech-icon typescript"><FaJs /></span>,
       },
+      {
+        name: "Kotlin",
+        description: {
+          es: "Lenguaje moderno para desarrollo multiplataforma con soporte para Android y backend.",
+          en: "Modern language for multi-platform development with support for Android and backend.",
+        },
+        logo: <span className="tech-icon kotlin"><SiKotlin /></span>,
+      }
     ],
   },
   {
@@ -136,6 +149,22 @@ const techData = [
         },
         logo: <span className="tech-icon chartjs"><SiChartdotjs /></span>,
       },
+      {
+        name: "Tailwind CSS",
+        description: {
+          es: "Framework CSS utilitario para un diseño rápido y personalizable.",
+          en: "Utility-first CSS framework for fast and customizable design.",
+        },
+        logo: <span className="tech-icon tailwindcss"><SiTailwindcss /></span>,
+      },
+      {
+        name: "Next.js",
+        description: {
+          es: "Framework de React para aplicaciones web de alto rendimiento.",
+          en: "React framework for high-performance web applications.",
+        },
+        logo: <span className="tech-icon nextjs"><SiNextdotjs /></span>,
+      },
     ],
   },
   {
@@ -173,8 +202,15 @@ const techData = [
         },
         logo: <span className="tech-icon flask"><SiFlask /></span>,
       },
-    ],
-  },
+      {
+        name: "NestJS",
+        description: {
+          es: "Framework de TypeScript para construir aplicaciones del lado del servidor escalables.",
+          en: "TypeScript framework for building scalable server-side applications.",
+        },
+        logo: <span className="tech-icon nestjs"><SiNestjs /></span>,
+      },
+    ],},
   {
     category: { es: "Bases de Datos", en: "Databases" },
     items: [

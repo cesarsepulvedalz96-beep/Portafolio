@@ -6,7 +6,7 @@ import { FaCoffee } from "react-icons/fa";
 const heroText = {
   es: {
     role: "DESARROLLADOR FULL STACK",
-    title: "Hola, mi nombre es Cesar Sepulveda",
+    title: "Hola, mi nombre es César Sepúlveda",
     intro:
       "Soy Analista Programador con enfoque en desarrollo Full Stack y aprendizaje constante. Me considero autodidacta, curioso y comprometido con mejorar cada dia, tanto en lo tecnico como en lo profesional.",
     projects: "Ver mis proyectos",
@@ -16,13 +16,13 @@ const heroText = {
   },
   en: {
     role: "FULL STACK DEVELOPER",
-    title: "Hi, my name is Cesar Sepulveda",
+    title: "Hi, my name is César Sepúlveda",
     intro:
       "I am a Programming Analyst focused on Full Stack development and continuous learning. I consider myself self-taught, curious, and committed to improving every day, both technically and professionally.",
     projects: "View my projects",
     download: "Download CV",
     loading: "Preparing coffee...",
-    alt: "Portrait of Cesar Sepulveda",
+    alt: "Portrait of César Sepúlveda",
   },
 };
 
@@ -43,7 +43,7 @@ export default function Hero({ language }) {
 
     window.setTimeout(() => {
       const link = document.createElement("a");
-      link.href = "/cv/cesar-cv.pdf";
+      link.href = `${import.meta.env.BASE_URL}cv/cesar-cv.pdf`;
       link.download = "Cesar_Sepulveda_CV.pdf";
       document.body.appendChild(link);
       link.click();
@@ -76,7 +76,7 @@ export default function Hero({ language }) {
                 {t.projects}
               </button>
               <a
-                href="/cv/cesar-cv.pdf"
+                href={`${import.meta.env.BASE_URL}cv/cesar-cv.pdf`}
                 download="Cesar_Sepulveda_CV.pdf"
                 className={`button is-primary cv-download-button ${isDownloadingCv ? "is-loading-cv" : ""}`}
                 onClick={handleCvDownload}

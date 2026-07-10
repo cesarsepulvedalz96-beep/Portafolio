@@ -22,7 +22,7 @@
   color: #3776ab;
 }
 .tech-icon.javascript svg {
-  color: #f7df1e;
+  color: #e9ce00;
 }
 .tech-icon.react svg {
   color: #61dafb;
@@ -68,6 +68,21 @@
 }
 .tech-icon.aws svg {
   color: #ff9900;
+}
+.tech-icon.tailwindcss svg {
+  color: #06b6d4;
+}
+.tech-icon.typescript svg {
+  color: #3178c6;
+}
+.tech-icon.nextjs svg {
+  color: #000000;
+}
+.tech-icon.nestjs svg {
+  color: #ff6384;
+}
+.tech-icon.kotlin svg {
+  color: #734f96;
 }
 
 /* Animación flotante */
