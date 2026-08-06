@@ -227,6 +227,27 @@ const projectsData = [
     github: "https://github.com/cesarsepulvedalz96-beep/ServiFrio_Web",
   },
 
+    {
+    title: {es: "DV Dowloader", en: "DV Downloader"},
+    subtitle: {
+      es: "Aplicación de escritorio para descargar videos y audio de YouTube.",
+      en: "Desktop application for downloading videos and audio from YouTube.",
+    },
+    images: [
+      `${import.meta.env.BASE_URL}images/imagesDV/part-1.webp`,
+      `${import.meta.env.BASE_URL}images/imagesDV/part-2.webp`,
+      `${import.meta.env.BASE_URL}images/imagesDV/part-3.webp`,
+    ],
+    description: {
+      es: "Aplicación de escritorio desarrollada en Python que permite descargar videos y audio de YouTube, seleccionar la calidad, visualizar información del contenido y elegir la carpeta de destino.",
+      en: "Desktop application developed in Python that allows downloading videos and audio from YouTube, selecting quality, viewing content information, and choosing the destination folder.",
+    },
+    technologies: [
+      "Python",
+    ],
+    github: "https://github.com/cesarsepulvedalz96-beep/DV-Downloader",
+  },
+
 ];
 
 const PROJECTS_PER_PAGE = 2;
