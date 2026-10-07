@@ -11,6 +11,9 @@ import {
   FaAws,
   FaGitlab,
   FaServer,
+  FaGithub,
+  FaExternalLinkAlt,
+  FaJava,
 } from "react-icons/fa";
 import {
   SiDjango,
@@ -33,6 +36,7 @@ import {
   SiNestjs,
   SiTypescript,
   SiKotlin,
+  SiSpringboot,
 } from "react-icons/si";
 
 const techIcons = {
@@ -65,9 +69,31 @@ const techIcons = {
   nestjs: <SiNestjs />,
   typescript: <SiTypescript />,
   kotlin: <SiKotlin />,
+  Java: <FaJava />,
+  "Spring Boot": <SiSpringboot />,
 };
 
 const projectsData = [
+  {
+    title: {es: "DV Dowloader", en: "DV Downloader"},
+    subtitle: {
+      es: "Aplicación de escritorio para descargar videos y audio de YouTube.",
+      en: "Desktop application for downloading videos and audio from YouTube.",
+    },
+    images: [
+      `${import.meta.env.BASE_URL}images/imagesDV/part-1.webp`,
+      `${import.meta.env.BASE_URL}images/imagesDV/part-2.webp`,
+      `${import.meta.env.BASE_URL}images/imagesDV/part-3.webp`,
+    ],
+    description: {
+      es: "Aplicación de escritorio desarrollada en Python que permite descargar videos y audio de YouTube, seleccionar la calidad, visualizar información del contenido y elegir la carpeta de destino.",
+      en: "Desktop application developed in Python that allows downloading videos and audio from YouTube, selecting quality, viewing content information, and choosing the destination folder.",
+    },
+    technologies: [
+      "Python",
+    ],
+    github: "https://github.com/cesarsepulvedalz96-beep/DV-Downloader",
+  },
   {
     title: {
       es: "LOTICKET - Sistema de Gestion de Tickets",
@@ -226,31 +252,66 @@ const projectsData = [
     ],
     github: "https://github.com/cesarsepulvedalz96-beep/ServiFrio_Web",
   },
-
-    {
-    title: {es: "DV Dowloader", en: "DV Downloader"},
+  {
+    title: "Kivo",
     subtitle: {
-      es: "Aplicación de escritorio para descargar videos y audio de YouTube.",
-      en: "Desktop application for downloading videos and audio from YouTube.",
+      es: "Plataforma de gestión de productos, inventario y ventas para pequeños comercios.",
+      en: "Product, inventory, and sales management platform for small businesses.",
     },
     images: [
-      `${import.meta.env.BASE_URL}images/imagesDV/part-1.webp`,
-      `${import.meta.env.BASE_URL}images/imagesDV/part-2.webp`,
-      `${import.meta.env.BASE_URL}images/imagesDV/part-3.webp`,
+      `${import.meta.env.BASE_URL}images/imagesKibo/part-1.webp`,
+      `${import.meta.env.BASE_URL}images/imagesKibo/part-2.webp`,
+      `${import.meta.env.BASE_URL}images/imagesKibo/part-3.webp`,
+      `${import.meta.env.BASE_URL}images/imagesKibo/part-4.webp`,
+      `${import.meta.env.BASE_URL}images/imagesKibo/part-5.webp`,
+      `${import.meta.env.BASE_URL}images/imagesKibo/part-6.webp`,
+      `${import.meta.env.BASE_URL}images/imagesKibo/part-7.webp`,
+      `${import.meta.env.BASE_URL}images/imagesKibo/part-8.webp`,
+      `${import.meta.env.BASE_URL}images/imagesKibo/part-9.webp`,
+      `${import.meta.env.BASE_URL}images/imagesKibo/part-10.webp`,
+      `${import.meta.env.BASE_URL}images/imagesKibo/part-11.webp`,
+      `${import.meta.env.BASE_URL}images/imagesKibo/part-12.webp`,
+      `${import.meta.env.BASE_URL}images/imagesKibo/part-13.webp`,
+      `${import.meta.env.BASE_URL}images/imagesKibo/part-14.webp`,
+      `${import.meta.env.BASE_URL}images/imagesKibo/part-15.webp`,
+      `${import.meta.env.BASE_URL}images/imagesKibo/part-16.webp`,
+      `${import.meta.env.BASE_URL}images/imagesKibo/part-17.webp`,
+      `${import.meta.env.BASE_URL}images/imagesKibo/part-18.webp`,
+      `${import.meta.env.BASE_URL}images/imagesKibo/part-19.webp`,
+      `${import.meta.env.BASE_URL}images/imagesKibo/part-20.webp`,
+      `${import.meta.env.BASE_URL}images/imagesKibo/part-21.webp`,
+      `${import.meta.env.BASE_URL}images/imagesKibo/part-22.webp`,
+      `${import.meta.env.BASE_URL}images/imagesKibo/part-23.webp`,
+      `${import.meta.env.BASE_URL}images/imagesKibo/part-24.webp`,
+      `${import.meta.env.BASE_URL}images/imagesKibo/part-25.webp`,
+      `${import.meta.env.BASE_URL}images/imagesKibo/part-26.webp`,
+      `${import.meta.env.BASE_URL}images/imagesKibo/part-27.webp`,
+      `${import.meta.env.BASE_URL}images/imagesKibo/part-28.webp`,
+      `${import.meta.env.BASE_URL}images/imagesKibo/part-29.webp`,
+      `${import.meta.env.BASE_URL}images/imagesKibo/part-30.webp`,
+      `${import.meta.env.BASE_URL}images/imagesKibo/part-31.webp`,
+      `${import.meta.env.BASE_URL}images/imagesKibo/part-32.webp`,
+      `${import.meta.env.BASE_URL}images/imagesKibo/part-33.webp`,
     ],
     description: {
-      es: "Aplicación de escritorio desarrollada en Python que permite descargar videos y audio de YouTube, seleccionar la calidad, visualizar información del contenido y elegir la carpeta de destino.",
-      en: "Desktop application developed in Python that allows downloading videos and audio from YouTube, selecting quality, viewing content information, and choosing the destination folder.",
+      es: "Aplicación web multiempresa desarrollada con React, TypeScript, Java y Spring Boot. Permite administrar productos, inventario, ventas, reportes y usuarios en un espacio independiente por empresa, además de gestionar planes y suscripciones desde un panel de administración.",
+      en: "Multi-company web application built with React, TypeScript, Java, and Spring Boot. It manages products, inventory, sales, reports, and users in a separate workspace for each business, with an administration panel for plans and subscriptions.",
     },
     technologies: [
-      "Python",
+      "React",
+      "typescript",
+      "Java",
+      "Spring Boot",
+      "PostgreSQL",
+      "Docker",
+      "Vite",
     ],
-    github: "https://github.com/cesarsepulvedalz96-beep/DV-Downloader",
+    github: "https://github.com/cesarsepulvedalz96-beep/Kibo",
   },
 
 ];
 
-const PROJECTS_PER_PAGE = 2;
+const PROJECTS_PER_PAGE = 4;
 
 const projectsText = {
   es: {
@@ -403,7 +464,6 @@ export default function Projects({ language }) {
                       {String(idx + 1).padStart(2, "0")} /{" "}
                       {String(projectsData.length).padStart(2, "0")}
                     </span>
-                    <div className="spotlight-divider" />
                     <h3 className="project-card-title">
                       {localized(project.title, language)}
                     </h3>
@@ -413,43 +473,44 @@ export default function Projects({ language }) {
 
                     <div className="project-card-actions">
                       <button
-                        className="button is-primary is-small"
+                        className="button is-small project-details-button"
                         type="button"
                         onClick={() => toggleExpanded(idx)}
                       >
+                        <FaExternalLinkAlt aria-hidden="true" />
                         {expanded.has(idx) ? t.hideDetails : t.showDetails}
                       </button>
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="button is-small project-github-button"
+                      >
+                        <FaGithub aria-hidden="true" />
+                        {t.github}
+                      </a>
                     </div>
-
-                    <div
-                      className={`project-card-details ${expanded.has(idx) ? "open" : ""}`}
-                    >
-                      <div>
-                        <p className="project-card-description">
-                          {localized(project.description, language)}
-                        </p>
-                        <div className="tags mb-3">
-                          {project.technologies.map((tech) => (
-                            <span
-                              key={tech}
-                              className={`tag tech-tag ${tech.toLowerCase().replace(/\./g, "")}`}
-                            >
-                              <span className="tech-tag-icon">
-                                {techIcons[tech]}
-                              </span>
-                              {tech}
-                            </span>
-                          ))}
-                        </div>
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="button is-primary is-small"
+                  </div>
+                </div>
+                <div
+                  className={`project-card-details ${expanded.has(idx) ? "open" : ""}`}
+                >
+                  <div>
+                    <p className="project-card-description">
+                      {localized(project.description, language)}
+                    </p>
+                    <div className="tags mb-3">
+                      {project.technologies.map((tech) => (
+                        <span
+                          key={tech}
+                          className={`tag tech-tag ${tech.toLowerCase().replace(/\./g, "")}`}
                         >
-                          {t.github}
-                        </a>
-                      </div>
+                          <span className="tech-tag-icon">
+                            {techIcons[tech]}
+                          </span>
+                          {tech}
+                        </span>
+                      ))}
                     </div>
                   </div>
                 </div>

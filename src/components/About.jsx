@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { FaBook, FaBookOpen } from "react-icons/fa";
+import { FaAward, FaBook, FaBookOpen } from "react-icons/fa";
+import CertificatesModal from "./CertificatesModal";
 
 const aboutText = {
   es: {
@@ -13,6 +14,7 @@ const aboutText = {
       "Actualmente busco oportunidades donde pueda aportar valor, seguir perfeccionando mis habilidades y asumir nuevos desafios.",
     readMore: "Leer mas",
     readLess: "Leer menos",
+    certificates: "Certificados y cursos",
     alt: "Ilustracion de Cesar Sepulveda con cafe",
   },
   en: {
@@ -24,12 +26,14 @@ const aboutText = {
       "I am currently looking for opportunities where I can add value, keep improving my skills, and take on new challenges.",
     readMore: "Read more",
     readLess: "Read less",
+    certificates: "Certificates and courses",
     alt: "Illustration of Cesar Sepulveda with coffee",
   },
 };
 
 export default function About({ language }) {
   const [expanded, setExpanded] = useState(false);
+  const [certificatesOpen, setCertificatesOpen] = useState(false);
   const t = aboutText[language];
 
   useEffect(() => {
@@ -65,21 +69,38 @@ export default function About({ language }) {
               )}
             </p>
 
-            <button
-              className="button is-primary about-read-button"
-              onClick={() => setExpanded(!expanded)}
-              type="button"
-            >
-              {expanded ? (
-                <FaBookOpen className="about-read-icon is-open" />
-              ) : (
-                <FaBook className="about-read-icon" />
+            <div className="about-actions">
+              <button
+                className="button is-primary about-read-button"
+                onClick={() => setExpanded(!expanded)}
+                type="button"
+                aria-expanded={expanded}
+              >
+                {expanded ? (
+                  <FaBookOpen className="about-read-icon is-open" />
+                ) : (
+                  <FaBook className="about-read-icon" />
+                )}
+                <span>{expanded ? t.readLess : t.readMore}</span>
+              </button>
+              {expanded && (
+                <button
+                  className="button is-primary about-certificates-button"
+                  type="button"
+                  aria-haspopup="dialog"
+                  onClick={() => setCertificatesOpen(true)}
+                >
+                  <FaAward aria-hidden="true" />
+                  <span>{t.certificates}</span>
+                </button>
               )}
-              <span>{expanded ? t.readLess : t.readMore}</span>
-            </button>
+            </div>
           </div>
         </div>
       </div>
+      {certificatesOpen && (
+        <CertificatesModal language={language} onClose={() => setCertificatesOpen(false)} />
+      )}
     </section>
   );
 }
